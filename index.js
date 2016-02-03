@@ -32,8 +32,7 @@ module.exports = function(options) {
   };
   loggers[filename] = new winston.Logger({
     transports: [
-      new (Rotate)(opts),
-      new (winston.transports.Console)()
+      new (Rotate)(opts)
     ]
   });
   return loggers[filename];
