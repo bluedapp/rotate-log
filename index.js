@@ -28,7 +28,10 @@ module.exports = function(options) {
   const filename = path.join(logPath, name);
   const opts = {
     datePattern: pattern,
-    filename: filename
+    filename: filename,
+    timestamp: function () {
+        return +new Date()
+    }
   };
   loggers[filename] = new winston.Logger({
     transports: [
