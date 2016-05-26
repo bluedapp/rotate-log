@@ -26,7 +26,9 @@ module.exports = function(options) {
     mkdirp.sync(options.path);
   }
   const filename = path.join(logPath, name);
+  const maxFiles = options.maxFiles || 24 * 7 // 默认打印7天的
   const opts = {
+    maxFiles: maxFiles
     datePattern: pattern,
     filename: filename,
     timestamp: function () {
