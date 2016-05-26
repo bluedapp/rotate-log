@@ -19,6 +19,7 @@ module.exports = function(options) {
   const name = options.name;
   const logPath = options.path || 'logs';
   const pattern = options.pattern || '.yyyy-MM-dd-HH.log'
+  const maxFiles = options.maxFiles || 24 * 7 // 默认打印7天的
   if(loggers[name]){
     return loggers[name];
   }
@@ -26,9 +27,8 @@ module.exports = function(options) {
     mkdirp.sync(options.path);
   }
   const filename = path.join(logPath, name);
-  const maxFiles = options.maxFiles || 24 * 7 // 默认打印7天的
   const opts = {
-    maxFiles: maxFiles
+    maxFiles: maxFiles,
     datePattern: pattern,
     filename: filename,
     timestamp: function () {
