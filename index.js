@@ -32,7 +32,7 @@ module.exports = function(options) {
     datePattern: pattern,
     filename: filename,
     timestamp: function () {
-        return new Date()
+        return (new Date()).toLocaleString()
     }
   };
   loggers[filename] = new winston.Logger({
